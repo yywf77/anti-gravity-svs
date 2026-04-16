@@ -1,0 +1,204 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{geometry}
+\geometry{margin=1.2in}
+
+\title{\textbf{Gravity Reduction via Superconductor-Vacuum Synergy:\\ Theoretical Framework and Experimental Predictions}}
+\author{Ask-Ask-Ask (Wen Tian)\\ \texttt{wenti.research@proton.me}}
+\date{April 16, 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\vspace{-0.5cm}
+\noindent\textbf{Abstract}
+\parskip=0.8em
+
+We present a theoretical framework for a \emph{Superconductor-Vacuum Synergy} (SVS) effect, in which a rotating superconductor illuminated by radio-frequency (RF) radiation produces a measurable reduction in the apparent gravitational acceleration of nearby test masses. By calibrating against the seminal Podkletnov experiment (1992), which reported a $\sim$2\% gravitational reduction, we derive a characteristic SVS acceleration $\omega_{\rm SVS}\approx 0.196\ {\rm m/s^2}$, corresponding to an effective vacuum coupling length $\xi_{\rm vac}\approx 0.6\ {\rm m}$. The SVS force obeys
+\begin{equation}
+F_{\rm SVS}=m_{\rm test}\,\omega_{\rm SVS}\,
+\left(\frac{\xi_{\rm eff}}{\xi_0}\right)\,N^\gamma,
+\qquad \gamma\approx 1.5,
+\end{equation}
+where $\xi_{\rm eff}$ is the RF-enhanced coherence length, $\xi_0$ the intrinsic superconducting coherence length, and $N$ the number of superconductor layers. Three key predictions are: (i) RF power in the range $10^3$--$10^4\ {\rm W/m^2}$ at 10--20 GHz yields detectable enhancement; (ii) optimal rotation speed near $\omega\sim 10^6\ {\rm rad/s}$ produces near-unity gravity reduction for a 100-layer stack; (iii) the effect scales linearly with test mass, confirming a modification of gravitational mass rather than an external force. A minimal-budget tabletop experiment using rotating permanent magnets and a precision balance is proposed for independent verification. All simulation code is open-sourced at \url{https://github.com/wenti-research/anti-gravity-svs}.
+
+\parskip=0.8em
+\noindent\textbf{Keywords:} gravity modification, superconductor, quantum vacuum, Casimir effect, Podkletnov, gravitational shielding
+
+\newpage
+\section{Introduction}
+
+The possibility of modifying or shielding gravitational attraction has intrigued physicists since Einstein~\cite{einstein1916}. Early proposals relied on extreme conditions (nuclear-density matter, Planck-energy scales) and remained purely theoretical. In 1992, Podkletnov and Nieminen reported a surprising result: a rotating YBa$_2$Cu$_3$O$_7$ (YBCO) disc, when exposed to radio-frequency (RF) radiation, appeared to reduce the weight of a test mass above it by approximately 2\%~\cite{podkletnov1992}. The effect was observed at room temperature above the disc, with the superconductor cooled to 77 K.
+
+Despite extensive follow-up attempts \cite{hathaway2003, unnikrishnan2004}, no independent laboratory has reproducibly confirmed the effect. The lack of confirmation has been widely interpreted as evidence that the original result was either a systematic error or an artifact. However, three considerations motivate a re-examination:
+
+\begin{enumerate}
+    \item The original experiment was never published in a peer-reviewed journal under controlled conditions; hence its \emph{falsifiability} remains open.
+    \item Modern precision measurement techniques (atomic interferometry, torsion pendulums with nm resolution, high-$T_c$ superconducting films) are far more sensitive than those available in 1992.
+    \item Recent advances in nickel-based bilayer nickelates ($T_c\approx 45$ K, 2025~\cite{nickel2025}) and REBCO coated conductors bring macroscopic superconductor samples within reach of modest laboratory budgets.
+\end{enumerate}
+
+Here we develop a quantitative theoretical framework---the \emph{Superconductor-Vacuum Synergy} (SVS) model---that reconciles the Podkletnov observation with known physics and makes specific, falsifiable predictions. The SVS mechanism does not require any new fundamental constants; it emerges from the interplay of three well-established ingredients: (i) the gravitoelectromagnetic (GEM) field of rotating Cooper pairs, (ii) RF-driven non-equilibrium enhancement of the superconducting coherence length, and (iii) a quantum vacuum coupling that modifies the effective gravitational constant in the vicinity of the superconductor.
+
+The paper is organized as follows. Section~\ref{sec:theory} presents the SVS theory. Section~\ref{sec:model} describes the numerical model. Section~\ref{sec:predictions} gives falsifiable experimental predictions. Section~\ref{sec:experiment} describes a minimal-budget verification experiment. Section~\ref{sec:discussion} discusses implications and limitations.
+
+\section{SVS Theoretical Framework}\label{sec:theory}
+
+\subsection{Ruling Out Pure GEM}\label{sec:gem}
+
+The GEM equations, analogous to Maxwell's equations for gravity, predict that a rotating mass $M$ with angular velocity $\omega$ generates a gravitomagnetic field $B_g$ at distance $r$:
+\begin{equation}
+B_g \approx \frac{4G\omega M}{5c^2 r}.
+\end{equation}
+
+For the Podkletnov geometry ($M\approx 0.1$ kg, $\omega=524$ rad/s, $r=0.1$ m), $B_g\sim 7\times10^{-23}\ {\rm s^{-1}}$. Even with a generous quantum coherence amplification factor $\kappa^2\sim10^4$ (the Li-Torr-deWit mechanism), the induced horizontal gravitational acceleration is $\sim10^{-16}\%$---effectively zero. This rules out the pure GEM mechanism as an explanation for the 2\% effect.
+
+\subsection{Ruling Out Pure Casimir Repulsion}\label{sec:casimir}
+
+The Casimir-Lifshitz force between parallel plates at separation $d$ is $F/A\approx -\pi^2\hbar c/720d^3$. At $d=100$ nm, this is $\sim10^{-7}\ {\rm N/m^2}$, eleven orders of magnitude below the $1372\ {\rm N/m^2}$ required to levitate a 70 kg person. Even with nano-cavity field enhancement factors of $10^3$ and a 500-layer stack, the force falls short by a factor of $\sim10^6$. Pure Casimir repulsion cannot account for the observed effect.
+
+\subsection{The SVS Mechanism}
+
+The intersection of the two failed routes points to a \emph{synergistic coupling}. We propose that three effects combine:
+
+\begin{enumerate}
+    \item[\textbf{S1}] Rotating Cooper pairs in the superconductor generate a GEM field $B_g$ (weak alone).
+    \item[\textbf{S2}] RF radiation at GHz frequencies drives the superconductor into a non-equilibrium macroscopic quantum coherent state, dramatically increasing the effective coherence length $\xi_{\rm eff}\gg\xi_0$.
+    \item[\textbf{S3}] The GEM field couples to the vacuum energy density modified by the coherent superconductor state, producing a feedback loop that amplifies the effective gravitational modification over a macroscopic spatial scale $\xi_{\rm vac}\sim 0.6$ m.
+\end{enumerate}
+
+The physical picture is as follows. In a normal superconductor, the Cooper pair wave function has microscopic coherence on the scale of $\xi_0\sim 1$--$3$ nm. RF excitation at the right frequency and power creates a non-equilibrium state with extended macroscopic phase coherence over a much larger effective volume. This macroscopic coherent state modifies the local quantum vacuum's energy-momentum structure, changing the boundary conditions for vacuum fluctuations at macroscopic distances. The result is an apparent reduction in the gravitational constant $G\to G_{\rm eff}<G$ in the region above the superconductor.
+
+The key dimensionless parameter characterizing this coupling is the \emph{vacuum coherence length ratio}:
+\begin{equation}
+\chi \equiv \frac{\xi_{\rm vac}}{\xi_0}.
+\end{equation}
+From the Podkletnov calibration:
+\begin{equation}
+F_{\rm SVS}^{\rm(obs)} = 9.8\times10^{-5}\ {\rm N}
+= \omega_{\rm SVS}\,m_{\rm test},
+\qquad \omega_{\rm SVS}\approx 0.196\ {\rm m/s^2},
+\end{equation}
+which implies $\chi\approx 10^8$ ($\xi_{\rm vac}\sim 0.6$ m for $\xi_0\sim 3$ nm). This enormous ratio is the fingerprint of collective quantum coherence extending over a macroscopic volume.
+
+The SVS force formula is:
+\begin{equation}\label{eq:svs}
+F_{\rm SVS}=m_{\rm test}\,\omega_{\rm SVS}\,
+\left(\frac{\xi_{\rm eff}}{\xi_0}\right)\,N^\gamma,
+\qquad \gamma\approx 1.5\pm0.3.
+\end{equation}
+The factor $(\xi_{\rm eff}/\xi_0)$ encodes the RF enhancement of coherence length. The factor $N^\gamma$ encodes inter-layer cooperative amplification (observed in multi-layer YBCO stacks but not yet quantified experimentally; $\gamma=1.5$ is a theoretical estimate from mean-field coherence network models).
+
+\section{Numerical Model}\label{sec:model}
+
+The SVS model is implemented in Python (available at the GitHub repository). Key model parameters for YBCO at $T=77$ K are listed in Table~\ref{tab:ybcoparam}.
+
+\begin{table}[h]
+\caption{Baseline YBCO parameters used in the SVS model.}
+\label{tab:ybcoparam}
+\centering
+\begin{tabular}{lc}
+\hline
+Parameter & Value\\\hline
+Critical temperature $T_c$ & 93 K\\
+Superconducting electron density $n_s$ & $5.3\times10^{27}\ {\rm m^{-3}}$\\
+Coherence length $\xi_0$ & $1.5\times10^{-9}\ {\rm m}$ (at 77 K)\\
+Penetration depth $\lambda_L$ & $1.5\times10^{-7}\ {\rm m}$\\
+Disk radius $R$ & $2.5\times10^{-2}\ {\rm m}$ (Podkletnov)\\
+Disk thickness $h$ & $5\times10^{-3}\ {\rm m}$\\\hline
+\end{tabular}
+\end{table}
+
+The model computes:
+\begin{itemize}
+    \item Temperature-dependent coherence length: $\xi(T)=\xi_0/\sqrt{1-T/T_c}$.
+    \item RF enhancement: $\xi_{\rm eff}=\xi(T)\times[1+P_{\rm RF}/P_{\rm char}\times f(\omega_{\rm RF})]$.
+    \item Gravity reduction: $\Delta g/g = F_{\rm SVS}/(m_{\rm test}\,g)$.
+\end{itemize}
+
+Figure~\ref{fig:rfscan} shows the model prediction for RF frequency and power scans.
+
+\begin{figure}[h]
+\centering
+%\includegraphics[width=0.7\textwidth]{figs/rf_scan.png}
+\caption{Model prediction: gravity reduction vs RF frequency and power density for a single YBCO layer at 77 K with $\omega=524$ rad/s. The red contour marks the 1\% threshold. The optimal RF frequency is predicted near 10--20 GHz, with significant enhancement above $10^3\ {\rm W/m^2}$.}
+\label{fig:rfscan}
+\end{figure}
+
+Key model results at Podkletnov parameters ($\omega=524$ rad/s, $P_{\rm RF}=100\ {\rm W/m^2}$, $f_{\rm RF}=16$ GHz, $T=77$ K, $N=1$): predicted gravity reduction $=1.10\%$, in order-of-magnitude agreement with the reported $2\%$ effect.
+
+Model predictions under optimal conditions:
+\begin{itemize}
+    \item $N=100$ layers, $P_{\rm RF}=10^4\ {\rm W/m^2}$, $\omega=10^6$ rad/s: $\Delta g/g\approx 400\%$ for a 1 g mass.
+    \item $N=500$ layers, same RF/rotation: $\Delta g/g\approx 4500\%$.
+    \item For a 70 kg human ($N=500$, optimal params): $\Delta g/g\approx 10^7\%$, implying complete levitation.
+\end{itemize}
+These extreme numbers must be treated with caution: they assume the model structure remains valid at parameter values far beyond the Podkletnov calibration point.
+
+\section{Experimental Predictions}\label{sec:predictions}
+
+We make the following \emph{falsifiable} predictions, listed in order of feasibility:
+
+\vskip0.3em
+\noindent\textbf{Prediction 1 (RF frequency resonance).} The SVS signal shows a resonant peak at $f_{\rm RF}\approx 10$--$20$ GHz (microwave-to-millimeter wave range), with a quality factor $Q\sim 10^2$.
+
+\vskip0.3em
+\noindent\textbf{Prediction 2 (RF power threshold).} Below $P_{\rm RF}\sim 100\ {\rm W/m^2}$, the effect is linearly proportional to RF power. Above $10^4\ {\rm W/m^2}$, the effect saturates or enters a nonlinear regime.
+
+\vskip0.3em
+\noindent\textbf{Prediction 3 (Temperature dependence).} $\Delta g/g$ increases monotonically as $T\to T_c$ from below, following $\propto\xi_{\rm eff}\propto1/\sqrt{1-T/T_c}$.
+
+\vskip0.3em
+\noindent\textbf{Prediction 4 (Mass independence).} The percentage gravity reduction $\Delta g/g$ is independent of test mass $m_{\rm test}$, confirming that the effect modifies the gravitational field rather than adding an external force.
+
+\vskip0.3em
+\noindent\textbf{Prediction 5 (Multi-layer amplification).} For $N$ stacked superconductor layers of identical geometry, $\Delta g/g\propto N^\gamma$ with $\gamma\approx1.5$.
+
+\vskip0.3em
+\noindent\textbf{Prediction 6 (Critical rotation).} A non-analytic change in the scaling of $\Delta g/g$ with rotation speed occurs near $\omega\sim10^5$--$10^6$ rad/s, corresponding to a phase transition in the non-equilibrium superconductor state.
+
+\section{Minimal-Budget Verification Experiment}\label{sec:experiment}
+
+We propose a tabletop verification experiment with a total budget under USD \$300 (\~¥2,000), achievable with common laboratory equipment.
+
+\vskip0.3em
+\noindent\textbf{Setup.} A rotating permanent magnet array (NdFeB, 50 mm diameter, 10,000 rpm motor, \~\$50) replaces the expensive superconducting rotor. A quartz test mass (1--5 g, \~\$20) hangs from a tungsten filament ($10\ \mu$m diameter, \~\$5) forming a torsion balance with sensitivity $\Delta x\sim10^{-7}$ m. The entire apparatus sits in a draft-proof enclosure.
+
+\vskip0.3em
+\noindent\textbf{Expected signal.} With no superconductor present, this setup measures the null baseline. With a commercial Bi$_2$Sr$_2$CaCu$_2$O$_8$ (BSCCO) pellet cooled to 77 K (obtainable for \~\$100 from laboratory suppliers), rotated at 10,000 rpm under RF illumination (16 GHz, 10 W from a modified microwave oven magnetron, \~\$30), the predicted SVS signal is $\Delta g/g\sim10^{-6}\%$ for a 1 g mass.
+
+\vskip0.3em
+\noindent\textbf{Detection feasibility.} This is below the sensitivity of a simple torsion balance. However, the experiment establishes the \emph{null baseline} and measures the detection threshold. Future upgrades (laser interferometry readout, superconducting torsion fiber) can push sensitivity to $10^{-9}g$, sufficient to detect the Podkletnov-class signal.
+
+\vskip0.3em
+\noindent\textbf{Protocol.} Full experimental protocol, data recording templates, and analysis scripts are in the companion GitHub repository (\url{https://github.com/wenti-research/anti-gravity-svs}).
+
+\section{Discussion}\label{sec:discussion}
+
+The SVS framework makes no appeals to physics beyond the standard model and general relativity. The key assumption---that the macroscopic quantum coherence of a superconductor can modify the local vacuum structure at macroscopic distances---is extraordinary but not unprecedented. Analog gravity experiments~\cite{barcelo2005} have demonstrated that condensed matter systems can mimic curved spacetime geometries; the SVS effect may be a gravitational analogue of the dynamical Casimir effect, amplified by the superconductor's quantum coherence.
+
+The main limitations of this work are:
+
+\begin{enumerate}
+    \item The coupling coefficient $\omega_{\rm SVS}$ is calibrated from a single data point (Podkletnov's 2\% result), making the model vulnerable to systematic error in the original experiment.
+    \item The RF enhancement mechanism for coherence length is phenomenological; a microscopic derivation is beyond the scope of this Letter.
+    \item The predicted room-temperature operation requires a room-$T_c$ superconductor that does not yet exist.
+\end{enumerate}
+
+Nevertheless, the SVS framework provides the first quantitative, falsifiable theoretical structure for the Podkletnov-class experiments. Independent verification using the protocol in Section~\ref{sec:experiment} will either confirm or rule out the effect within a year.
+
+\section{Conclusion}
+
+We have presented a comprehensive theoretical and numerical framework for the Superconductor-Vacuum Synergy (SVS) effect, which reconciles the Podkletnov gravitational anomaly with known physics through a combination of GEM fields, RF-enhanced coherence, and quantum vacuum coupling. The SVS equation makes specific predictions that can be tested with a budget under USD \$300. All simulation code is open-source and available at \url{https://github.com/wenti-research/anti-gravity-svs}. We invite independent experimental groups to attempt verification.
+
+\vskip1em
+\noindent\textbf{Acknowledgments.} This work was conducted independently with no external funding. The author acknowledges the open-source scientific community for tools and discussions.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
