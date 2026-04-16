@@ -1,0 +1,37 @@
+研究,研究者,年份,实验/理论,材料/方法,关键结果,数值,来源,备注
+Podkletnov实验,Podkletnov & Nieminen,1992,实验,YBCO圆盘+旋转+RF,YBa2Cu3O7-x超导体上方物体减重,2.0%,Physica C 203 441-444,直径~5cm,未独立复现
+Hathaway复现,Hathaway et al.,2003,复现实验,YBCO圆盘+旋转+RF,未检测到重力变化,0.0%,Class Quantum Grav 20 1,NASA资助,否定性结果
+Unnikrishnan复现,Unnikrishnan,1996,复现实验,YBCO,未检测到引力屏蔽,0.0%,Physica C 266 133,N/A,印度塔塔基础研究所
+Li-Torr理论,Li & Torr,1991,理论,超导体量子相干,引力磁场放大因子估算,10^11倍,Phys Rev D 43 457,被Harris批评高估
+Harris批评,Harris,1999,理论批评,Li-Torr推导,量子放大因子重新估算,10^3-10^5倍,Found Phys Lett 12 201,指出推导中的不现实假设
+Tajmar理论,Tajmar & de Matos,2005,理论,Ginzburg-Landau框架,引力磁场对超流氦的影响,预测值保守,Physica C 2005,用GL理论重新推导
+Casimir吸引,Casimir,1948,理论,平行金属板,两平行中性金属板间Casimir力,F/A = -π²/240 × ħc/d⁴,Proc KNAW 51 793,吸引力
+Casimir排斥(理论),Boyer,1968,理论,导体球+纯磁介质球,球形几何产生排斥力,-,Phys Rev 174 1764,理论预言
+Casimir排斥(实验),Munday Capasso Parmar,2009,实验,Au+SiO2浸入Bromobenzene,首次测量排斥Casimir-Lifshitz力,可达nN级,Nature 457 170,方向可控
+Casimir超材料排斥,Zhao et al.,2010,理论+计算,有限厚度超材料板,超材料产生排斥Casimir力,-,arXiv 1009.0563,Ames Lab
+Casimir超材料摩擦,Ames Lab Soukoulis,2009,理论计算,纳米谐振腔超材料,排斥Casimir力减少纳米机械摩擦,-,EurekAlert 2009,美国能源部
+Høye Brevik排斥,Høye & Brevik,2018,理论,完美介电+纯磁板,完整量子统计处理排斥Casimir力,-,arXiv 1805.06224,挪威科技大学
+Verlinde熵引力,Verlinde,2010,理论,全息+统计力学,引力=熵力,牛顿定律可推导,arXiv 1001.0785,阿姆斯特丹大学
+Verlinde涌现引力,Verlinde,2016,理论,暗能量熵位移,表观暗物质=涌现引力效应,-,arXiv 1611.02269,解释星系旋转曲线无需暗物质
+Emergent-MOND比较,Milgrom & Sanders,2016,理论比较,Verlinde vs MOND,高度一致于星系尺度,-,arXiv 1612.09582,Weizmann研究所
+宽双星测试,Yoon et al.,2024,观测验证,宽双星轨道异常,Verlinde修正公式可解释,1.29因子修正,arXiv 2206.11685,突破牛顿引力在弱场极限
+室温超导理论,QMUL团队,2025,理论计算,基本常数分析,TC上限100-1000K包括室温,293-298K,Nature报道,理论上限证明
+Ni基高温超导,南方科大/清华,2026,实验,La2.85Pr0.15Ni2O7,首次超过麦克米兰极限,45K,Ta改Tc=45K,Nature 2026年2月
+REBCO带材,中科院金属所,2026,工程,千米级REBCO涂层导体,国产化突破,-,搜狐行业报告,打破进口垄断
+超导二极管,哈佛大学,2023,实验,BSCCO薄膜界面,高温超导二极管,96K,科技报道,界面量子态可控
+Allais引力屏蔽,Chen Shaoguang,2005,理论+实验,日食期间扭摆,引力屏蔽效应,G(r)=G(1-q),CPFD CNKI,量子场论引力唯象模型
+反重力飞行器传闻,TR-3B据传,N/A,传闻,N/A,N/A,N/A,知乎整理,未证实
+引力动态理论,特斯拉,N/A,理论手稿,高频引力波HFGW,-,网络,特斯拉飞碟专利据传
+Li宁论文,Torr & Li,1993,理论,超导引力电磁耦合,引力电耦合方程,-,Found Phys Lett 6 371,李宁1991PRD的延续
+Li宁第三篇,Li Torr Karwacki,1994,理论,晶格离子旋转引力磁偶极,-,-,UAH preprint,晶格离子旋转的引力磁偶极矩
+超导引力磁场耦合理论,Modanese,1996,理论,Podkletnov现象的理论解释,-,-,Max Planck研究所,引力微观机制未知
+YBCO临界温度,YBa2Cu3O7材料参数,N/A,材料常数,临界温度Tc,93K,标准值,液氮温区
+BSCCO临界温度,Bi2Sr2CaCu2O7材料参数,N/A,材料常数,临界温度Tc,110K,标准值,液氮温区
+Ni基临界温度,La2.85Pr0.15Ni2O7材料参数,2025,材料常数,临界温度Tc,45K,实测值,Nature 2026
+London穿透深度,YBCO参数,N/A,材料常数,伦敦穿透深度λL,150nm,标准值,超导相干尺度
+Cooper对密度,YBCO参数,N/A,材料常数,超导电子密度ns,10^27/m³,典型值,全量
+Casimir板间距典型,纳米机械典型,N/A,工程参数,板间距d,10-1000nm,工程可达,力∝1/d^4
+Casimir排斥力强度,Munday实验,2009,实验,Au+SiO2+Benz,排斥力大小,nN级(10^-9N),Nature 2009,实验条件特定
+引力常数,G标准值,N/A,物理常数,万有引力常数G,6.67e-11,NIST,精确值
+光速,c标准值,N/A,物理常数,光速c,3.0e8 m/s,NIST,精确值
+地球引力加速度,g标准值,N/A,物理常数,地球g,9.8 m/s²,NIST,精确值
